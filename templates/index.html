@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Предиктивная ML-платформа</title>
+
+    <style>
+        body { font-family: -apple-system, system-ui, sans-serif; background: #f4f4f9; padding: 20px; }
+        .container { max-width: 650px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        textarea { width: 100%; height: 420px; font-family: monospace; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        button { background: #007bff; color: white; border: none; padding: 12px 20px; cursor: pointer; border-radius: 4px; font-size: 16px; width: 100%; margin-top: 15px; }
+        button:hover { background: #0056b3; }
+        .status { padding: 10px; margin-bottom: 20px; border-radius: 4px; }
+        .status.ok { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .status.bad { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Веб-интерфейс модели классификации</h2>
+
+        {% if model_loaded %}
+            <div class="status ok">
+                Модель успешно загружена и готова к предсказанию.
+            </div>
+        {% else %}
+            <div class="status bad">
+                Модель не загружена: {{ model_error }}
+            </div>
+        {% endif %}
+
+        <p>JSON с признаками тестируемой сессии:</p>
+
+        <form action="/predict" method="post">
+            <textarea name="json_data">{{ default_payload }}</textarea>
+            <button type="submit">Получить прогноз</button>
+        </form>
+    </div>
+</body>
+</html>
