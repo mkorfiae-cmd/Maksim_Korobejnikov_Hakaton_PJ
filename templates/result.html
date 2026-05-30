@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Результат прогноза</title>
+
+    <style>
+        body { font-family: -apple-system, system-ui, sans-serif; background: #f4f4f9; padding: 20px; }
+        .container { max-width: 650px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .result { padding: 20px; background: #e9ecef; border-radius: 4px; }
+        .probability { font-size: 24px; font-weight: bold; }
+        button { background: #007bff; color: white; border: none; padding: 12px 20px; cursor: pointer; border-radius: 4px; font-size: 16px; width: 100%; margin-top: 15px; }
+        button:hover { background: #0056b3; }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Результат прогноза</h2>
+
+        <div class="result">
+            <p class="probability">
+                Вероятность конверсии: {{ probability }}%
+            </p>
+
+            <p>
+                Predicted class: {{ predicted_class }}
+            </p>
+        </div>
+
+        <button onclick="window.location.href='/'">
+            Вернуться назад
+        </button>
+    </div>
+</body>
+</html>
